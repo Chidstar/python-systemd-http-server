@@ -14,4 +14,3 @@ install:
 uninstall:
 	@sudo rm -rf ${INSTALL_LOCATION}
 	@sudo rm -rf ${SERVICE_SCRIPT}
-	
