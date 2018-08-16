@@ -1,17 +1,17 @@
 .PHONY = install uninstall
 
-NAME = python-systemd-http-server
+NAME = python-simple-server
 INSTALL_LOCATION = /opt/${NAME}
 SERVICE_SCRIPT = /etc/systemd/system/${NAME}.service
 
 install:
-	@cp ${NAME}.service ${SERVICE_SCRIPT}
-	@mkdir -p ${INSTALL_LOCATION}
-	@cp app.py ${INSTALL_LOCATION}
-	@cp -r public ${INSTALL_LOCATION}
-	@systemctl daemon-reload
+	@sudo cp ${NAME}.service ${SERVICE_SCRIPT}
+	@sudo mkdir -p ${INSTALL_LOCATION}
+	@sudo cp app.py ${INSTALL_LOCATION}
+#	@sudo cp -r public ${INSTALL_LOCATION}
+	@sudo systemctl daemon-reload
 
 uninstall:
-	@rm -rf ${INSTALL_LOCATION}
-	@rm -rf ${SERVICE_SCRIPT}
+	@sudo rm -rf ${INSTALL_LOCATION}
+	@sudo rm -rf ${SERVICE_SCRIPT}
 	

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DIR=$(pwd)
+zip server.zip app.py Makefile python-simple-server.service
+scp ${DIR}/server.zip jenkins@10.0.10.11:/home/jenkins/
+
+ssh jenkins@10.0.10.11 << _EOF_
+rm -rf simple-server
+mkdir simple-server
+unzip -o /home/jenkins/server.zip -d /home/jenkins/simple-server
+cd simple-server
+make install
+_EOF_
